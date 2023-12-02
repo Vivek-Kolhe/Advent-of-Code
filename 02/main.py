@@ -14,8 +14,8 @@ def process_input(FILE):
 
 LINES = process_input(FILE)
 
-def partOne(LINES):
-    s = 0
+def bothParts(LINES):
+    ans1, ans2 = 0, 0
     for i in range(len(LINES)):
         red, green, blue = 0, 0, 0
         set = LINES[i]
@@ -31,28 +31,9 @@ def partOne(LINES):
                         blue = max(blue, int(t[0]))
         
         if red <= RED and green <= GREEN and blue <= BLUE:
-            s += i + 1
-    return s
-
-def partTwo(LINES):
-    s = 0
-    for i in range(len(LINES)):
-        red, green, blue = 0, 0, 0
-        set = LINES[i]
-        for subset in set:
-            for turn in subset:
-                t = turn.split(" ")
-                match t[1]:
-                    case "red":
-                        red = max(red, int(t[0]))
-                    case "green":
-                        green = max(green, int(t[0]))
-                    case "blue":
-                        blue = max(blue, int(t[0]))
-        
-        s += (red * green * blue)
-    return s
+            ans1 += (i + 1)
+        ans2 += (red * green * blue)
+    return [ans1, ans2]
 
 if __name__ == "__main__":
-    print(partOne(LINES))
-    print(partTwo(LINES))
+    print(*bothParts(LINES))
