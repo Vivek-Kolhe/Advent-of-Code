@@ -77,8 +77,7 @@ class Parser:
                             sym_flag = self.check_mid(l, r, i, st)
                         
                         if sym_flag:
-                            s += int(st)
-                    
+                            s += int(st)  
                     st = ""
                     l = -1
             if r == len(curr) - 1:
@@ -88,7 +87,6 @@ class Parser:
                 
                 if sym_flag and st:
                     s += int(st)
-
         return s
     
     def partTwo(self):
