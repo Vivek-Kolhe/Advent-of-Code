@@ -12,19 +12,9 @@ def process_input(FILE):
 
 LINES = process_input(FILE)
 
-def partOne(LINES):
-    s = 0
-    for line in LINES:
-        cnt = 0
-        for item in line[0]:
-            if item in line[1]:
-                cnt += 1
-        s += pow(2, cnt - 1) if cnt > 0 else 0
-    return s
-
-def partTwo(LINES):
+def bothParts(LINES):
+    s, i = 0, 1
     cards = [1] * len(LINES)
-    i = 1
     for line in LINES:
         cnt = 0
         for item in line[0]:
@@ -34,8 +24,8 @@ def partTwo(LINES):
         for k in range(cnt):
             cards[j+k] += 1 * cards[i-1]
         i += 1
-    return sum(cards)
+        s += pow(2, cnt - 1) if cnt > 0 else 0
+    return [s, sum(cards)]
 
 if __name__ == "__main__":
-    print(partOne(LINES))
-    print(partTwo(LINES))
+    print(*bothParts(LINES), sep="\n")
