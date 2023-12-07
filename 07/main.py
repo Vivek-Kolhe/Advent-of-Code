@@ -68,14 +68,15 @@ def compare(first, second, order, part):
     if f != s:
         if f < s:
             return -1
-        else:
+        if f > s:
             return 1
+        return 0
     else:
         for i in range(5):
             x, y = order.index(first[i]), order.index(second[i])
             if x < y:
                 return -1
-            elif x > y:
+            if x > y:
                 return 1
     return 0
 
