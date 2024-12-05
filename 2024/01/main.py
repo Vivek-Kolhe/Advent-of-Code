@@ -1,3 +1,5 @@
+import time
+
 FILE = "input.txt"
 
 def process_input():
@@ -34,4 +36,6 @@ def part_two():
     return score
 
 if __name__ == '__main__':
+    start = time.perf_counter()
     print(part_one(), part_two(), sep="\n")
+    print(f"Time taken: {(time.perf_counter() - start) * 1000} ms")
